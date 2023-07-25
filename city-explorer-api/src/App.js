@@ -9,7 +9,6 @@ function App() {
   const [map, setMap] = useState("");
 
   function handleSearch(event) {
-    // console.log("Hey you guys!");
     setSearchQuery(event.target.value);
     console.log(searchQuery);
   }
@@ -18,7 +17,7 @@ function App() {
     try {
       event.preventDefault();
       event.target.input.value = "";
-      // console.log("location found");
+      console.log("location found");
       console.log(process.env.REACT_APP_API_KEY)
       const API = `https://eu1.locationiq.com/v1/search?key=${process.env.REACT_APP_API_KEY}&q=${searchQuery}&format=json`;
       const res = await axios.get(API);
@@ -31,14 +30,12 @@ function App() {
   }
 
   function handleMap(data) {
-    // console.log(data);
+    console.log(data);
     const API = `https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_API_KEY}&center=${data.lat},${data.lon}&zoom=9`;
-    // const res = await axios.get(API);
     setMap(API);
   }
 
-  // 52.6285576
-  // 1.2923954
+
 
   return (
     <div className="App">
